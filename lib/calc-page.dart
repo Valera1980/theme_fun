@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:themefun/card_item.dart';
 
+import 'ResultsArgunemts.dart';
 import 'calculate-button.dart';
 import 'constans.dart';
 
 class CalcPage extends StatelessWidget {
+//  final String bmiResult;
+//  final String resultText;
+//  final String comment;
+//  CalcPage({
+//    @required this.bmiResult,
+//    @required this.resultText,
+//    @required this.comment
+//  });
+
   @override
   Widget build(BuildContext context) {
+    final ResultsArguments args = ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('RESULT'),
@@ -30,8 +42,9 @@ class CalcPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text('NORMAL', style: kResultTextStyle,),
-                  Text('18.3', style: kBmiTextStyle,)
+                  Text(args.resultText, style: kResultTextStyle,),
+                  Text(args.bmiResult, style: kBmiTextStyle,),
+                  Text(args.comment, style: kLabelTextStyle,)
                 ],
               ),
             ),

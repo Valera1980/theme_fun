@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:themefun/ResultsArgunemts.dart';
+import 'package:themefun/calc-page.dart';
 import 'calculate-button.dart';
+import 'calculator/calculator.dart';
 import 'constans.dart';
 import 'card_item.dart';
 import 'custom_round_icon_button.dart';
@@ -14,8 +17,8 @@ class _InputPageState extends State<InputPage> {
   Color maleCardColor = kInactiveCardColor;
   Color feMaleCardColor = kInactiveCardColor;
   int height = 180;
-  int weight = 60;
-  int age = 15;
+  int weight = 80;
+  int age = 30;
   void updateColor(Gender gender) {
     if (gender == Gender.male) {
       if (maleCardColor == kInactiveCardColor) {
@@ -185,7 +188,7 @@ class _InputPageState extends State<InputPage> {
                                 iconData: FontAwesomeIcons.minus,
                                 onPress: () {
                                   setState(() {
-                                    if(weight > 40){
+                                    if (weight > 40) {
                                       weight--;
                                     }
                                   });
@@ -218,7 +221,7 @@ class _InputPageState extends State<InputPage> {
                               iconData: FontAwesomeIcons.plus,
                               onPress: () {
                                 setState(() {
-                                    age++;
+                                  age++;
                                 });
                               },
                             ),
@@ -229,7 +232,7 @@ class _InputPageState extends State<InputPage> {
                               iconData: FontAwesomeIcons.minus,
                               onPress: () {
                                 setState(() {
-                                  if(age > 10){
+                                  if (age > 10) {
                                     age--;
                                   }
                                 });
@@ -244,14 +247,26 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
             CalculateButton(
-              onTap: (){
-                Navigator.pushNamed(context, '/result-page');
+              onTap: () {
+                Calculator calc =
+                    new Calculator(height: height, weight: weight);
+                String bmiResult = calc.calc();
+                String resultText = calc.getResult();
+                String comment = calc.getAdvancedComment();
+
+                Navigator.pushNamed(context, '/result-page',
+                    arguments: ResultsArguments(
+                      bmiResult: bmiResult,
+                      resultText: resultText,
+                      comment: comment,
+                    ));
               },
-              text: Text('CALCULATE', style: kLargeButtonTextStyleSmaller,),
+              text: Text(
+                'CALCULATE',
+                style: kLargeButtonTextStyleSmaller,
+              ),
             )
           ],
         ));
   }
 }
-
-
