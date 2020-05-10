@@ -6,7 +6,7 @@ class Calculator {
   final int height;
   double _bmi;
   Calculator({this.height, this.weight}){
-//    assert(height == 0);
+    assert(height != 0);
   }
   String calc() {
     _bmi = weight / pow(height/100, 2);
