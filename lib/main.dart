@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+import 'calc-page.dart';
 import 'input_page_widget.dart';
 
 void main(){
@@ -15,7 +16,12 @@ class MainWidget extends StatelessWidget {
           primaryColor: Color(0xFF0A0E21),
           scaffoldBackgroundColor: Color(0xFF0A0E21)
         ) ,
-        home: InputPage());
+        home: InputPage(),
+        routes: {
+          '/calc-page': (context) =>  MainWidget(),
+          '/result-page': (context) =>  CalcPage(),
+        },
+    );
   }
 }
 

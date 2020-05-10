@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'calculate-button.dart';
 import 'constans.dart';
 import 'card_item.dart';
 import 'custom_round_icon_button.dart';
@@ -189,9 +190,9 @@ class _InputPageState extends State<InputPage> {
                                     }
                                   });
                                 },
-                              )
+                              ),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -231,7 +232,6 @@ class _InputPageState extends State<InputPage> {
                                   if(age > 10){
                                     age--;
                                   }
-
                                 });
                               },
                             )
@@ -243,13 +243,15 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 15),
-              color: Color(0xffeb1555),
-              width: double.infinity,
-              height: 80,
+            CalculateButton(
+              onTap: (){
+                Navigator.pushNamed(context, '/result-page');
+              },
+              text: Text('CALCULATE', style: kLargeButtonTextStyleSmaller,),
             )
           ],
         ));
   }
 }
+
+
